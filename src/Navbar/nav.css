@@ -1,0 +1,95 @@
+.navigation-bar {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+}
+
+.nav-logo {
+    width: 150px;
+
+}
+
+.user-icon {
+    background-color: #d70f64;
+    color: white;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    text-align: center;
+    border-radius: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.user-icon .fa-user {
+    font-size: 12px;
+
+}
+
+.Login-button {
+    display: flex;
+    /* background-color: #d70f64; */
+    /* padding: 4px; */
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: #ebebeb 2px solid;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cart {
+    border-left: #ebebeb 2px solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #d70f64;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.cart-color {
+    color: #d70f64;
+    text-decoration: none;
+}
+
+.cart-color:hover {
+    color: #d70f64;
+}
+
+.user-Dropdown {
+    color: #d70f64;
+    padding: 5px;
+    font-weight: bold;
+    margin-right: 5px;
+    /* text-transform: uppercase; */
+}
+
+.user-Dropdown .fa-user {
+    font-size: 12px;
+    background-color: #d70f64;
+    color: white;
+    padding: 8px;
+    border-radius: 100%;
+    margin-right: 5px;
+
+}
+
+@media only screen and (max-width: 480px) {
+    .nav-link a {
+        display: none;
+    }
+
+    /* #navbarScrollingDropdown{
+    display: none;
+} */
+    /* .nav-link{
+    position: absolute;
+} */
+
+}

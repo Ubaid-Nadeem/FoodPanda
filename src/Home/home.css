@@ -1,0 +1,142 @@
+.home {
+    position: absolute;
+    /* top: 7%; */
+    width: 100%;
+}
+
+.home-child-1 {
+    background: url('./groceries-back2.jpg');
+    display: flex;
+    max-width: 100%;
+    height: 90vh;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+}
+
+.adress-container {
+    /* background-color: #ffff; */
+    display: flex;
+    padding: 10px;
+    /* box-shadow: 1px 1px 5px 1px #888888; */
+    width: 800px;
+    /* margin: 10px; */
+    align-items: center;
+    justify-content: space-around;
+    /* justify-content: space-between; */
+}
+
+.home-child-1 p {
+    font-size: 40px;
+    font-weight: lighter;
+
+}
+
+.adress-box {
+    width: 60%;
+}
+
+.button-box {
+    width: 40%;
+    text-align: center;
+}
+
+.pick-up,
+.delivery {
+    padding: 10px;
+    background-color: #d70f64;
+    border: none;
+    color: #ffff;
+    width: 120px;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+.partners-name-overwrite {
+    width: 100%;
+    align-items: center;
+}
+
+.partners-name-overwrite h1 {
+    position: absolute;
+    color: #f5f5f5;
+    font-size: 90px;
+    z-index: -1;
+}
+
+.partners-name-overwrite p {
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+.cheif-background {
+    width: 100%;
+    height: 400px;
+    background: url('./cooking-cheif.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.partner-info {
+    background-color: #ffff;
+    width: 400px;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 20px;
+    padding: 20px;
+
+}
+
+.partner-info h2 {
+    font-weight: lighter;
+}
+
+.partner-info button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d70f64;
+    border: none;
+    color: #ffff;
+
+}
+
+@media only screen and (max-width: 820px) {
+
+    .adress-container {
+        background-color: none;
+        width: 100%;
+        display: block;
+    }
+
+    .adress-box {
+        width: 100%;
+    }
+
+    .button-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .button-box button {
+        width: 49%;
+        margin: 10px;
+    }
+
+    .home-child-1 p {
+        font-size: 35px;
+    }
+
+    .partner-info {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .partner-info {
+        width: 100;
+    }
+}
