@@ -1,4 +1,10 @@
+// import * as React from 'react';
 import logo from './foodpanda_logo.png'
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import './nav.css'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Link } from "react-router-dom";
@@ -13,14 +19,54 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function NavBar() {
-
+  const navigate = useNavigate()
+  let { user, setUser, cart,  setModal} = useContext(AppContext);
   const auth = getAuth();
-  let { user, setUser } = useContext(AppContext);
+
+
+
+  function notificationsLabel(count) {
+    if (count === 0) {
+      return 'no notifications';
+    }
+    if (count > 99) {
+      return 'more than 99 notifications';
+    }
+    return `${count} notifications`;
+  }
+
+
+
 
   const [currentUser, setCurrentUser] = useState({})
 
+
+  const GoToCart = () => {
+    if (window.location.pathname == "/user/cart") {
+        window.history.back();
+    }
+    else {
+        navigate("/user/cart")
+    }
+
+
+}
+
+
+  function notificationsLabel(count) {
+    if (count === 0) {
+        return 'no notifications';
+    }
+    if (count > 99) {
+        return 'more than 99 notifications';
+    }
+    return `${count} notifications`;
+}
 
 
   return (<div className='navigation-bar'>
@@ -57,7 +103,7 @@ function NavBar() {
                         <i className="fa-solid fa-user "> </i>
 
                         <a >
-                          {user[0].fisrtName}
+                          {user.fisrtName}
                         </a>
                       </div>
 
@@ -68,6 +114,8 @@ function NavBar() {
                         <li><a className="dropdown-item" style={{ cursor: "pointer" }} onClick={() => {
                           localStorage.removeItem("user")
                           setUser(undefined)
+                          setModal("modal")
+
                         }}>Log out</a></li>
                       </ul>
                     </div>
@@ -79,7 +127,12 @@ function NavBar() {
           }
 
           <div className='cart'>
-            <i className="fa-solid fa-bag-shopping"></i>
+          <IconButton aria-label={notificationsLabel(100)} onClick={GoToCart}>
+         <Badge badgeContent={cart == undefined ? 0 : cart.length} color="secondary">
+             <ShoppingCartIcon style={{ color: "#d70f64" }} />
+         </Badge>
+
+        </IconButton >
           </div>
 
 
@@ -90,7 +143,7 @@ function NavBar() {
       </div>
     </nav>
 
-    
+
   </div>)
 
 

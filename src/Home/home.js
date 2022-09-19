@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Container } from "@mui/system";
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
+import Cities from "../Cities/cities";
 import "./home.css"
 function Home(props) {
 
@@ -54,8 +55,7 @@ function Home(props) {
 
             <div className="home-child-2">
                 <Container>
-
-                    <div className="partners-name-overwrite ">
+                    <div className="partners-name-overwrite">
                         <h1>Partners</h1>
                         <p>You prepare the food, we handle the rest</p>
                     </div>
@@ -76,7 +76,20 @@ function Home(props) {
 
                 </div>
             </div>
+
+
+            <div className="home-child-3">
+                <Container>
+                    <div className="cities-heading">
+                        <h1>Cities</h1>
+                        <p>Find us in these cities and many more!</p>
+                    </div>
+                </Container>
+                <Cities /> 
+            </div>
         </div>
+
+
 
     </div >)
 }

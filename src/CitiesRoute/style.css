@@ -1,0 +1,59 @@
+
+
+.body {
+    position: relative;
+    top: 80px;
+}
+
+.body h1 {
+    font-weight: lighter;
+}
+
+.main-container {
+    display: flex;
+    margin-top: 30px;
+}
+.body h3{
+font-size: 25px;
+margin-top: 20px;
+/* font-weight: lighter; */
+}
+.shopContainer {
+    width: 250px;
+    height: 230px;
+    /* margin: 5px; */
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 5px;
+    /* background-color: aquamarine; */
+}
+
+.shopContainer img {
+    max-width: 100%;
+    height: 150px;
+    background-color: gray;
+}
+
+.shopContainer h2 {
+    font-size: 16px;
+    padding: 10px;
+}
+@media only screen and (max-width: 420px) {
+    .main-container {
+        display: block;
+        margin-top: 30px;
+    }
+    .shopContainer {
+        display: block;
+        width: 100%;
+        height: 270px;
+        /* background-color: aquamarine; */
+    }
+    .shopContainer img {
+        max-width: 100%;
+        height: auto;
+        background-color: gray;
+    }
+    
+}

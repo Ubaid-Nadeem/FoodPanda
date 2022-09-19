@@ -35,7 +35,7 @@ function Profile() {
 
     const setValue = () => {
         if (user) {
-            setEmail(user[0].email);
+            setEmail(user.email);
         }
     }
 
@@ -55,7 +55,7 @@ function Profile() {
                         size="small"
                         className='outlined-size-small'
                         // onChange={getValue}
-                        value={user ? user[0].email : ""}
+                        value={user ? user.email : ""}
                         type='email'
                     />
                     <TextField
@@ -64,7 +64,7 @@ function Profile() {
                         size="small"
                         className='outlined-size-small'
                         // onChange={getValue}
-                        value={user ? user[0].fisrtName : ""}
+                        value={user ? user.fisrtName : ""}
                         type='text'
                     />
                     <TextField
@@ -73,7 +73,7 @@ function Profile() {
                         size="small"
                         className='outlined-size-small'
                         // onChange={getValue}
-                        value={user ? user[0].lastName : ""}
+                        value={user ? user.lastName : ""}
                         type='text'
                     />
                     <TextField

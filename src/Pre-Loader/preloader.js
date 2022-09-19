@@ -8,7 +8,7 @@ function PreLoader() {
     let { user, setUser, loader, setLoader } = useContext(AppContext);
 
     const [open, setOpen] = useState(false);
-    console.log(loader)
+    // console.log(loader)
     return <div>
         <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

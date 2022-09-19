@@ -61,16 +61,21 @@
 .partners-name-overwrite h1 {
     position: absolute;
     color: #f5f5f5;
-    font-size: 90px;
+    margin: 0;
+    padding: 0;
+    font-size: 160px;
     z-index: -1;
 }
 
 .partners-name-overwrite p {
-    padding-top: 40px;
-    padding-left: 20px;
+    padding-top: 80px;
+    /* padding-left: 10px; */
+    font-size: 30px;
+    font-weight: lighter;
 }
 
 .cheif-background {
+    /* margin-top: 100px; */
     width: 100%;
     height: 400px;
     background: url('./cooking-cheif.jpg');
@@ -81,7 +86,7 @@
 
 .partner-info {
     background-color: #ffff;
-    width: 400px;
+    width: 500px;
     position: absolute;
     margin-top: 150px;
     margin-left: 20px;
@@ -101,7 +106,24 @@
     color: #ffff;
 
 }
+.cities-heading{
+    margin-top: 120px; 
+}
+.cities-heading h1{
+    position: absolute;
 
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-size: 160px;
+    z-index: -1;
+}
+.cities-heading p {
+    padding-top: 80px;
+    /* padding-left: 10px; */
+    font-size: 30px;
+    font-weight: lighter;
+}
 @media only screen and (max-width: 820px) {
 
     .adress-container {
@@ -114,7 +136,7 @@
         width: 100%;
     }
 
-    .button-box {
+    .button-box {   
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -133,10 +155,60 @@
     .partner-info {
         width: 300px;
     }
+    .partners-name-overwrite h1{
+        font-size: 120px;
+    }
+    .partners-name-overwrite p{
+        font-size: 25px;
+        padding-top: 50px;
+    }
+    .cities-heading{
+        margin-top: 120px; 
+    }
+    .cities-heading h1{
+        color: #f5f5f5;   
+        font-size: 140px;
+    }
+    .cities-heading p {
+        padding-top: 50px;
+        font-size: 25px;
+    }
 }
 
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 520px) {
     .partner-info {
-        width: 100;
+        width: 90%;
+        margin-left: 0px;
+       
     }
+    .partners-name-overwrite h1{
+        font-size: 90px;
+    }
+    .partners-name-overwrite p{
+        font-size: 20px;
+        padding-top: 30px;
+    }
+    .cities-heading{
+        margin-top: 100px; 
+    }
+    .cities-heading h1{
+        color: #f5f5f5;   
+        font-size: 90px;
+    }
+    .cities-heading p {
+        padding-top: 50px;
+        font-size: 20px;
+    }
+
+}
+@media only screen and (max-width: 320px) {
+    .partners-name-overwrite h1{
+        font-size: 60px;
+    }
+    .partners-name-overwrite p{
+        font-size: 13px;
+        padding-top: 20px;
+    }
+
+
 }

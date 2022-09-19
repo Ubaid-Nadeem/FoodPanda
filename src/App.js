@@ -17,6 +17,11 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import PreLoader from "./Pre-Loader/preloader";
+import { Karachi, Islamabad, Rawalpindi, Multan } from "./CitiesRoute/citiesRoute";
+import Restaurant from "./Restaurant/restaurant";
+import Cart from "./Cart/cart";
+
+
 function App() {
   const [activeUser, setActiveUser] = useState({})
   const [open, setOpen] = useState(false);
@@ -42,7 +47,7 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth();
-  const URL = "http://localhost:400"
+  // const URL = "http://localhost:400"
 
 
   useEffect(() => {
@@ -59,6 +64,12 @@ function App() {
           <Route path='/' element={<Home CurrentUser={activeUser} />} />
           <Route path='/login/new' element={<AuthNewUser />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/city/karachi" element={<Karachi />} />
+          <Route path="/city/islamabad" element={<Islamabad />} />
+          <Route path="/city/multan" element={<Multan />} />
+          <Route path="/city/rawalpindi" element={<Rawalpindi />} />
+          <Route path={`/restaurant/:id`} element={<Restaurant />} />
+          <Route path="/user/cart" element={<Cart />} />
         </Routes>
         <PreLoader />
       </AppProvider>

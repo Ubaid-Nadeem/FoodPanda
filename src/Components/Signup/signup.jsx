@@ -26,7 +26,6 @@ import PreLoader from '../../Pre-Loader/preloader';
 function SignUp() {
 
     const URL = "https://food-panda-clone.herokuapp.com"
-    // const LOCAL_URL = "http://localhost:400"
     // const URL = "http://localhost:400"
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -60,7 +59,7 @@ function SignUp() {
     const navigate = useNavigate();
 
 
-    let { user, setUser, loader, setLoader } = useContext(AppContext);
+    let { user, setUser, loader, setLoader, cart, setCart, setModal } = useContext(AppContext);
 
 
 
@@ -77,6 +76,9 @@ function SignUp() {
 
     useEffect(() => {
 
+
+
+
         if ([...searchParams].length == 1) {
 
             if ([...searchParams][0][1] == "login" && email.length < 1) {
@@ -85,7 +87,7 @@ function SignUp() {
                     search: '?step=email',
                 })
             }
-            if ([...searchParams][0][1] == "password" && email.length < 1) {
+            if (user != undefined || [...searchParams][0][1] == "password" && email.length < 1) {
                 navigate({
                     pathname: '/login/new',
                     search: '',
@@ -211,47 +213,69 @@ function SignUp() {
 
     const CreateNewUesr = () => {
 
-        if (characters == "pass" && capitalAtoZ == "pass" && aToz == "pass" && number == "pass") {
 
-            let Data = {
-                email: createUserEmail,
-                firstName: firstName,
-                lastName: lastName,
-                Password: values.password
+        if (characters == "pass" && capitalAtoZ == "pass" && aToz == "pass" && number == "pass" && firstName.length > 1 && lastName.length > 1) {
+
+            let CheckEmail = createUserEmail.split('@')
+            if (CheckEmail[1] == "gmail.com") {
+                let Data = {
+                    email: createUserEmail,
+                    firstName: firstName,
+                    lastName: lastName,
+                    Password: values.password
+                }
+
+                var myHeaders = new Headers();
+                myHeaders.append(
+                    "Content-Type", "application/json",
+                    "Access-Control-Allow-Origin", "*"
+
+                );
+                var raw = JSON.stringify({
+                    "email": createUserEmail,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "Password": values.password
+                });
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                };
+
+                fetch(`${URL}/createNewUser`, requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.error) {
+                            window.alert(result.error)
+                        }
+                        else {
+                            // console.log(result)
+                            window.alert(result.message)
+                            navigate('/')
+                            const userID = {
+                                _id: result.user._id
+                            };
+
+                            localStorage.setItem("user", JSON.stringify(userID));
+                            setUser(result.user)
+                            setModal("")
+                        }
+
+                    })
+                    .catch(error => console.log('error', error));
+
             }
-
-            var myHeaders = new Headers();
-            myHeaders.append(
-                "Content-Type", "application/json",
-                "Access-Control-Allow-Origin", "*"
-
-            );
-            var raw = JSON.stringify({
-                "email": createUserEmail,
-                "firstName": firstName,
-                "lastName": lastName,
-                "Password": values.password
-            });
-
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-            };
-
-            fetch(`${URL}/createNewUser`, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result)
-                    window.alert(result.message)
-                    navigate('/')
-                })
-                .catch(error => console.log('error', error));
+            else {
+                window.alert("Invalid email")
+            }
         }
         else {
-            window.alert("please complete all requirment")
+            window.alert("Please Complete all requirments")
         }
+
 
     }
 
@@ -281,9 +305,9 @@ function SignUp() {
                 fetch(`${URL}/checkEmail`, requestOptions)
                     .then(response => response.json())
                     .then(data => {
-
-                        if (result.length == 0) {
-
+                        // console.log(data)
+                        if (data.length == 0) {
+                            // console.log(result)
                             setEmail(result.user.email)
                             setFirstName(result.user.displayName.split(' ')[0]);
                             setLastName(result.user.displayName.split(' ')[1]);
@@ -339,13 +363,18 @@ function SignUp() {
 
                 }
                 else {
-                    navigate('/')
+                    navigate("/")
+                    // console.log(window.history)
                     const userID = {
-                        _id: result[0]._id
+                        _id: result._id
                     };
 
                     localStorage.setItem("user", JSON.stringify(userID));
                     setUser(result)
+                    setCart(result.cart)
+                    setModal("")
+
+                    // console.log(result)
                 }
             })
 
@@ -373,9 +402,20 @@ function SignUp() {
             };
 
             fetch(`${URL}/createNewUser`, requestOptions)
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(result => {
+                    // console.log(result)
+                    window.alert(result.message)
                     navigate('/')
+                    const userID = {
+                        _id: result.user._id
+                    };
+
+                    localStorage.setItem("user", JSON.stringify(userID));
+                    setUser(result.user)
+                    setCart(result.user.cart)
+                    setModal("")
+
                 })
                 .catch(error => console.log('error', error));
         }
@@ -594,7 +634,10 @@ function SignUp() {
 
             <div className='EmailBox'>
                 <img src={lock} />
-                <h3>Create a Password</h3>
+                <h3 style={{
+                    paddingTop: "10px",
+                    paddingBottom: "10px"
+                }}>Create a Password</h3>
 
                 <FormControl sx={{ width: '99%' }} variant="outlined" size="small">
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>

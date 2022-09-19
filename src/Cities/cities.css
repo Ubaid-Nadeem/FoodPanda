@@ -1,0 +1,61 @@
+.cities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.city-div {
+    width: 250px;
+    height: 250px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.city-div img {
+    max-width: 250px;
+    height: 250px;
+    z-index: -1;
+    position: absolute;
+}
+
+.city-div h1 {
+    color: #fff;
+    padding-top: 200px;
+}
+
+@media only screen and (max-width: 712px) {
+    .city-div {
+        width: 200px;
+        height: 200px;
+    }
+
+    .city-div img {
+        max-width: 200px;
+        height: 200px;
+        z-index: -1;
+        position: absolute;
+    }
+    .city-div h1 {
+        padding-top: 160px;
+    }
+        
+ 
+}
+
+@media only screen and (max-width: 412px) {
+    .city-div {
+        width: 150px;
+        height: 150px;
+    }
+
+    .city-div img {
+        max-width: 150px;
+        height: 150px;
+        z-index: -1;
+        position: absolute;
+    }
+    .city-div h1 {
+        padding-top: 110px;
+    }
+        
+}
